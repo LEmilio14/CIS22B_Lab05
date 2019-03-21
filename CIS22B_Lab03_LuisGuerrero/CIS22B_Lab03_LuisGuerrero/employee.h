@@ -24,4 +24,7 @@ public:
 	std::string getEmployeeName();
 	int getEmployeeNumber();
 	std::string getHireDate();
+
+	//class exception
+	class InvalidEmployeeNumber {};
 };

@@ -16,7 +16,14 @@ void Employee::setEmployeeName(std::string str) {
 	employeeName = str;
 }
 void Employee::setEmployeeNumber(int num) {
-	employeeNumber = num;
+	if (num < 0 || num > 9999)
+	{
+		throw InvalidEmployeeNumber();
+	}else
+	{
+		employeeNumber = num;
+	}
+	
 }
 void Employee::setHireDate(std::string hDate) {
 	hireDate = hDate;
