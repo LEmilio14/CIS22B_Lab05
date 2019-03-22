@@ -16,7 +16,7 @@ void Employee::setEmployeeName(std::string str) {
 	employeeName = str;
 }
 void Employee::setEmployeeNumber(int num) {
-	if (num < 0 || num > 9999)
+	if (num < 1 || num > 9999)
 	{
 		throw InvalidEmployeeNumber();
 	}else

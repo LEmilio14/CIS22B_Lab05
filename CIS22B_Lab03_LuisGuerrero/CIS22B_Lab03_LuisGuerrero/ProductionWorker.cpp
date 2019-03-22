@@ -11,10 +11,24 @@ ProductionWorker::ProductionWorker(int shiftType, double payRate) {
 }
 
 void ProductionWorker::setShift(int sh) {
-	shift = sh;
+	if (sh != 1 || sh != 2) 
+	{
+		throw InvalidShift();
+	}
+	else
+	{
+		shift = sh;
+	}
 }
 void ProductionWorker::setHourlyPay(double pay) {
-	hourlyPayRate = pay;
+	if(pay < 1)
+	{
+		throw InvalidPayRate();
+	}
+	else
+	{
+		hourlyPayRate = pay;
+	}
 }
 
 int ProductionWorker::getShift() { return shift; }

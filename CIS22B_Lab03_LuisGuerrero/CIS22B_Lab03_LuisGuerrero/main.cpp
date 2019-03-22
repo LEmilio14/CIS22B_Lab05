@@ -16,91 +16,107 @@ int main() {
 	int reHours, attHours;
 
 		//employee
-		cout << "Please enter the employee's information" << endl;
+		ProductionWorker emp1(0, 0);
+
+		cout << "Please enter the employee's information" << endl << endl;
 		cout << "Please enter employee's name: ";
 		cin >> empName;
-		cout << endl;
 		cout << "Please enter empoyee's number: ";
 		cin >> empNumber;
-		cout << endl;
+		try
+		{
+			emp1.setEmployeeNumber(empNumber);
+		}
+		catch (Employee::InvalidEmployeeNumber)
+		{
+			cout << "ERROR: Invalid employee number." << endl;
+		}
 		cout << "Please enter the date hired: ";
 		cin >> empDate;
-		cout << endl;
 		cout << "Please enter employee's shift type " << endl;
 		cout << "\t[1]Day Shift [2]Night Shift: ";
 		cin >> empShift;
+		try
+		{
+			emp1.setShift(empShift);
+		}
+		catch (ProductionWorker::InvalidShift)
+		{
+			cout << "ERROR: Invalid shift." << endl;
+		}
+		/*
 		while (empShift != 1 && empShift != 2) {
 			cout << endl;
 			cout << "ERROR: Enter a valid shift..." << endl;
 			cout << "\t[1]Day Shift [2]Night Shift: ";
 			cin >> empShift;
-		}
-		cout << endl;
+		}*/
 		cout << "Please enter the employee's pay rate: ";
 		cin >> empPayRate;
 		cout << endl << endl;
-	
+
+		emp1.setEmployeeName(empName);
+		emp1.setHireDate(empDate);
+		try
+		{
+			emp1.setHourlyPay(empPayRate);
+
+		}
+		catch (ProductionWorker::InvalidPayRate)
+		{
+			cout << "ERROR: Invalid pay rate." << endl;
+		}
 
 		//supervisor
-		cout << "Please enter supervisor information:" << endl;
+		cout << "Please enter supervisor information:" << endl << endl;
 		cout << "Please enter supervisor's name: ";
 		cin >> suprName;
-		cout << endl;
 		cout << "Please enter supervisor's number: ";
 		cin >> suprNum;
-		cout << endl;
 		cout << "Please enter the date hired: ";
 		cin >> suprDate;
-		cout << endl;
 		cout << "Please enter supervisor's annual salary: ";
 		cin >> annualSalary;
-		cout << endl;
 		cout << "Please enter supervisor's annual bonus: ";
 		cin >> annualBonus;
 		cout << endl << endl;
 
 		//team leader
-		cout << "Now enter team leader information:" << endl;
+		cout << "Now enter team leader information:" << endl << endl;
 		cout << "Please enter team leader's name: ";
 		cin >> leaderName;
-		cout << endl;
 		cout << "Please enter team leader's number: ";
 		cin >> leaderNum;
-		cout << endl;
 		cout << "Please enter the date hired: ";
 		cin >> leaderDate;
-		cout << endl;
 		cout << "Please enter team leader's shift type " << endl;
 		cout << "\t[1]Day Shift [2]Night Shift: ";
 		cin >> leaderShift;
+		/*
 		while (leaderShift != 1 && leaderShift != 2) {
 			cout << endl;
 			cout << "ERROR: Enter a valid shift..." << endl;
 			cout << "\t[1]Day Shift [2]Night Shift: ";
 			cin >> leaderShift;
-		}
-		cout << endl;
+		}*/
 		cout << "Please enter the team leader's pay rate: ";
 		cin >> leaderPayRate;
-		cout << endl;
 		cout << "Please enter team leader monthly bonus: ";
 		cin >> monBonus;
-		cout << endl;
 		cout << "Please enter required hours for team leader: ";
 		cin >> reHours;
-		cout << endl;
 		cout << "Please enter hours attended by team leader: ";
 		cin >> attHours;
 		cout << endl << endl;
 
 	//Create an employee object
-	ProductionWorker emp1(empShift, empPayRate);
+	//ProductionWorker emp1(empShift, empPayRate);
 	ShiftSupervisor supervisor(annualSalary, annualBonus);
 	TeamLeader leader(monBonus, reHours, attHours);
 
-	emp1.setEmployeeName(empName);
-	emp1.setEmployeeNumber(empNumber);
-	emp1.setHireDate(empDate);
+	//emp1.setEmployeeName(empName);
+	//emp1.setEmployeeNumber(empNumber);
+	//emp1.setHireDate(empDate);
 
 	supervisor.setEmployeeName(suprName);
 	supervisor.setEmployeeNumber(suprNum);
@@ -117,7 +133,27 @@ int main() {
 	cout << endl;
 	
 	if (answer == 1) {
+
 		cout << "=================== Employee Information ===============" << endl << endl;
+		/*try 
+		{
+			emp1.setEmployeeNumber(empNumber);
+			emp1.setShift(empShift);
+			emp1.setHourlyPay(empShift);
+
+		}
+		catch (Employee::InvalidEmployeeNumber)
+		{
+			cout << "ERROR: Invalid employee number." << endl;
+		}
+		catch (ProductionWorker::InvalidShift)
+		{
+			cout << "ERROR: Invalid shift." << endl;
+		}
+		catch (ProductionWorker::InvalidPayRate)
+		{
+			cout << "ERROR: Invalid pay rate." << endl;
+		}*/
 		cout << "Employee's Name: " << emp1.getEmployeeName() << endl << endl;
 		cout << "Employee's Number: " << emp1.getEmployeeNumber() << endl << endl;
 		cout << "Employee's Hired Date: " << emp1.getHireDate() << endl << endl;

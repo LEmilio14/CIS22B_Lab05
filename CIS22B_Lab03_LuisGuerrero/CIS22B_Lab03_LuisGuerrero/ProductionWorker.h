@@ -20,4 +20,8 @@ public:
 	//getters
 	int getShift();
 	double getHourlyPay();
+
+	//exception class
+	class InvalidShift {}; 
+	class InvalidPayRate {};
 };
